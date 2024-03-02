@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.5.6",
+    "@astrojs/vercel": "^7.3.4",
     "astro": "^4.4.9"
   },
   "devDependencies": {
@@ -23,6 +24,11 @@
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
     "prettier-plugin-tailwindcss": "^0.5.11",
-    "typescript": "next"
+    "typescript": "next",
+    "vercel": "^33.5.3"
+  },
+  "packageManager": "^bun@1.0.26",
+  "engines": {
+    "node": ">=20.6.0"
   }
 }
