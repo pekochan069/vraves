@@ -1,4 +1,4 @@
-import { cva } from "styled-system/css";
+import { css, cva } from "styled-system/css";
 
 export const buttonStyles = cva({
 	base: {
@@ -10,10 +10,9 @@ export const buttonStyles = cva({
 		fontSize: "sm",
 		fontWeight: "medium",
 		transition: "colors",
-		pointerEvents: "pointer",
+		cursor: "pointer",
 		_focusVisible: {
-			outline: "none",
-			ring: 2,
+			ringWidth: 2,
 			ringColor: "ring",
 			ringOffset: 2,
 		},
@@ -89,10 +88,89 @@ export const buttonStyles = cva({
 					textDecoration: "underline",
 				},
 			},
+			expandIcon: {
+				position: "relative",
+				bg: "primary",
+				color: "primary.foreground",
+				_hover: {
+					bg: "primary/90",
+				},
+			},
+			ringHover: {
+				bg: "primary",
+				color: "primary.foreground",
+				transition: "all",
+				duration: "300ms",
+				_hover: {
+					bg: "primary/90",
+					ringWidth: 2,
+					ringColor: "primary/90",
+					ringOffset: 2,
+				},
+			},
+			gooeyRight: {
+				position: "relative",
+				bg: "primary",
+				color: "primary.foreground",
+				zIndex: 0,
+				overflow: "hidden",
+				transition: "all",
+				duration: "500ms",
+				_before: {
+					content: "''",
+					position: "absolute",
+					inset: 0,
+					zIndex: -10,
+					translateX: "150%",
+					translateY: "150%",
+					scale: 2.5,
+					rounded: "full",
+					bgGradient: "to-r",
+					gradientFrom: "zinc.400",
+					transition: "transform",
+					duration: "1000ms",
+					_hover: {
+						translateX: "-150%",
+						translateY: "-150%",
+					},
+				},
+			},
 		},
 	},
 	defaultVariants: {
 		size: "md",
 		variant: "primary",
+	},
+});
+
+export const buttonIconLeftStyles = css({
+	// w-0 translate-x-[0%] pr-0 opacity-0 transition-all duration-200 group-hover:w-5 group-hover:translate-x-100 group-hover:pr-2 group-hover:opacity-100
+	w: 0,
+	translateX: "0%",
+	pr: 0,
+	opacity: 0,
+	transition: "all",
+	transitionDuration: "200ms",
+	_groupHover: {
+		w: 5,
+		translateX: "100%",
+		pr: 2,
+		opacity: 100,
+	},
+});
+
+export const buttonIconRightStyles = css({
+	// w-0 translate-x-[100%] pl-0 opacity-0 transition-all duration-200 group-hover:w-5 group-hover:translate-x-0 group-hover:pl-2 group-hover:opacity-100
+	w: 0,
+	translateX: "100%",
+	pl: 0,
+	opacity: 0,
+	transition: "all",
+	transitionDuration: "200ms",
+	_groupHover: {
+		w: 5,
+		translateX: "0",
+		pl: 2,
+		opacity: 100,
 	},
 });

@@ -1,4 +1,8 @@
 ---
+import { css, cx } from "styled-system/css";
+
+import Button from "~/components/ui/Button.astro";
+import { buttonStyles } from "~/components/ui/Button.css";
 import BaseLayout from "~/layouts/BaseLayout.astro";
 
 import { indexStyles } from "./index.css";
@@ -8,4 +12,5 @@ const styles = indexStyles();
 
 <BaseLayout title="Vraves">
   <h1>Vraves</h1>
+  <Button variant="ringHover">button</Button>
 </BaseLayout>

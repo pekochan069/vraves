@@ -1,9 +1,48 @@
 ---
+import type { HTMLAttributes } from "astro/types";
+import type { RecipeVariantProps } from "styled-system/types";
 
+import { cx } from "styled-system/css";
+
+import {
+  buttonIconLeftStyles,
+  buttonIconRightStyles,
+  buttonStyles,
+} from "./Button.css";
+
+type Props = HTMLAttributes<"button"> &
+  RecipeVariantProps<typeof buttonStyles> & {
+    iconPosition?: "left" | "right";
+  };
+
+const {
+  class: className,
+  iconPosition,
+  size = "md",
+  variant = "primary",
+  ...props
+} = Astro.props;
+
+const styles = buttonStyles({
+  size,
+  variant,
+});
 ---
 
-<button>
-  <slot name="icon-left" />
+<button {...props} class={cx("group", styles, className)}>
+  {
+    iconPosition === "left" && (
+      <div class={buttonIconLeftStyles}>
+        <slot name="icon-left" />
+      </div>
+    )
+  }
   <slot />
-  <slot name="icon-right" />
+  {
+    iconPosition === "right" && (
+      <div class={buttonIconRightStyles}>
+        <slot name="icon-right" />
+      </div>
+    )
+  }
 </button>
