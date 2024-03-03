@@ -23,3 +23,7 @@ pnpm-debug.log*
 
 # drizzle
 .drizzle/
+
+## Panda
+styled-system
+styled-system-studio

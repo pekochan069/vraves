@@ -1,6 +1,6 @@
 import { sqliteTable, text } from "drizzle-orm/sqlite-core";
 
-export const vtubers = sqliteTable("vtubers", {
-  id: text("id").primaryKey(),
+export const agencies = sqliteTable("agencies", {
+	id: text("id").primaryKey(),
   name: text("name").notNull(),
 });
