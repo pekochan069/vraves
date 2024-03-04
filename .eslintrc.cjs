@@ -29,12 +29,6 @@ module.exports = {
     },
     {
       files: ["src/components/ui/*.astro"],
-      parser: "astro-eslint-parser",
-      parserOptions: {
-        parser: "@typescript-eslint/parser",
-        extraFileExtensions: [".astro"],
-      },
-      processor: "astro/client-side-ts",
       rules: {
         "perfectionist/sort-objects": "off",
       },
