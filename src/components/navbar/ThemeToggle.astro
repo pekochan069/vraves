@@ -22,7 +22,9 @@ import Dropdown from "~/components/ui/Dropdown.astro";
     <li x-on:click="theme='dark'">
       <span class="mr-2"><Moon /></span>Dark
     </li>
-    <li x-on:click="console.log(theme)">
+    <li
+      x-on:click="theme=window.matchMedia('(prefers-color-scheme: dark)')?'dark':'light'"
+    >
       <span class="mr-2"><Computer /></span>System
     </li>
   </ul>
