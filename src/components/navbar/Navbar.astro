@@ -1,0 +1,19 @@
+---
+import CrossFill from "~/components/icons/ph/CrossFill.astro";
+
+import ThemeToggle from "./ThemeToggle.astro";
+---
+
+<header class="container mx-auto py-4">
+  <nav class="flex">
+    <div class="flex-0">
+      <a
+        class="relative inline-flex h-10 items-center justify-center whitespace-nowrap rounded-md px-4 py-2 text-xl font-bold ring-offset-background transition-colors after:absolute after:bottom-2 after:h-[1px] after:w-2/3 after:origin-bottom-right after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 after:ease-in-out hover:after:origin-bottom-left hover:after:scale-x-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+        href="/">Vraves<span class="text-primary"><CrossFill /></span></a
+      >
+    </div>
+    <div class="flex-1">
+      <ThemeToggle />
+    </div>
+  </nav>
+</header>

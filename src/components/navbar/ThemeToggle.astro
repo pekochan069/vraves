@@ -1,0 +1,29 @@
+---
+import Computer from "~/components/icons/lucide/Computer.astro";
+import Moon from "~/components/icons/lucide/Moon.astro";
+import Sun from "~/components/icons/lucide/Sun.astro";
+import Dropdown from "~/components/ui/Dropdown.astro";
+---
+
+<Dropdown triggerSize="icon" triggerVariant="ghost">
+  <Fragment slot="trigger">
+    <Sun
+      class="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-transform dark:-rotate-90 dark:scale-0"
+    />
+    <Moon
+      class="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-transform dark:rotate-0 dark:scale-100"
+    />
+    <span class="sr-only">Toggle theme</span>
+  </Fragment>
+  <ul class="w-28" slot="content">
+    <li x-on:click="theme='light'">
+      <span class="mr-2"><Sun /></span>Light
+    </li>
+    <li x-on:click="theme='dark'">
+      <span class="mr-2"><Moon /></span>Dark
+    </li>
+    <li x-on:click="console.log(theme)">
+      <span class="mr-2"><Computer /></span>System
+    </li>
+  </ul>
+</Dropdown>
