@@ -1,0 +1,68 @@
+---
+import { cn } from "~/lib/utils";
+import Button from "./Button.astro";
+
+type Props = {
+  triggerVariant?:
+    | "default"
+    | "secondary"
+    | "outline"
+    | "destructive"
+    | "ghost"
+    | "link"
+    | "expandIcon"
+    | "ringHover"
+    | "shine"
+    | "gooeyRight"
+    | "gooeyLeft"
+    | "linkHover1"
+    | "linkHover2"
+    | undefined;
+  triggerSize?: "default" | "sm" | "lg" | "icon" | undefined;
+  triggerClass?: string;
+};
+
+const {
+  triggerVariant = "default",
+  triggerSize = "default",
+  triggerClass = "",
+} = Astro.props;
+---
+
+<ui-dropdown class="dropdown">
+  <Button
+    type="button"
+    class={cn("trigger-button", triggerClass)}
+    variant={triggerVariant}
+    size={triggerSize}
+  >
+    <slot name="trigger" />
+  </Button>
+  <slot name="content" />
+</ui-dropdown>
+<script>
+  class Dropdown extends HTMLElement {
+    constructor() {
+      super();
+
+      const triggerButton = this.querySelector(".trigger-button");
+      const content = this.querySelector("ul");
+
+      triggerButton.addEventListener("click", () => {
+        content.dataset.state =
+          content.dataset.state === "open" ? "closed" : "open";
+        console.log("clicked");
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!triggerButton.contains(e.target)) {
+          if (content.dataset.state === "open") {
+            content.dataset.state = "closed";
+          }
+        }
+      });
+    }
+  }
+
+  customElements.define("ui-dropdown", Dropdown);
+</script>
