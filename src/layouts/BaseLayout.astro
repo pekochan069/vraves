@@ -18,9 +18,9 @@ const { title } = Astro.props;
   </head>
   <body
     class="antialiased"
-    x-bind:class="{'dark':theme===$persist('dark')}"
+    x-bind:class="{'dark':theme==='dark'}"
     x-cloak
-    x-data="{theme:'dark'}"
+    x-data="{theme:$persist('dark')}"
   >
     <div id="app">
       <slot />
