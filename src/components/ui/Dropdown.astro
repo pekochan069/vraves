@@ -1,25 +1,26 @@
 ---
 import { cn } from "~/lib/utils";
+
 import Button from "./Button.astro";
 
 type Props = {
+  triggerClass?: string;
+  triggerSize?: "default" | "icon" | "lg" | "sm" | undefined;
   triggerVariant?:
     | "default"
-    | "secondary"
-    | "outline"
     | "destructive"
-    | "ghost"
-    | "link"
     | "expandIcon"
-    | "ringHover"
-    | "shine"
-    | "gooeyRight"
+    | "ghost"
     | "gooeyLeft"
+    | "gooeyRight"
+    | "link"
     | "linkHover1"
     | "linkHover2"
+    | "outline"
+    | "ringHover"
+    | "secondary"
+    | "shine"
     | undefined;
-  triggerSize?: "default" | "sm" | "lg" | "icon" | undefined;
-  triggerClass?: string;
 };
 
 const {
@@ -31,10 +32,10 @@ const {
 
 <ui-dropdown class="dropdown">
   <Button
-    type="button"
     class={cn("trigger-button", triggerClass)}
-    variant={triggerVariant}
     size={triggerSize}
+    type="button"
+    variant={triggerVariant}
   >
     <slot name="trigger" />
   </Button>
@@ -48,14 +49,17 @@ const {
       const triggerButton = this.querySelector(".trigger-button");
       const content = this.querySelector("ul");
 
+      if (!triggerButton || !content) {
+        return;
+      }
+
       triggerButton.addEventListener("click", () => {
         content.dataset.state =
           content.dataset.state === "open" ? "closed" : "open";
-        console.log("clicked");
       });
 
       document.addEventListener("click", (e) => {
-        if (!triggerButton.contains(e.target)) {
+        if (!triggerButton.contains(e.target as Node)) {
           if (content.dataset.state === "open") {
             content.dataset.state = "closed";
           }
