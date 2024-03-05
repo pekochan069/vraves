@@ -29,9 +29,9 @@ module.exports = {
     },
     {
       files: ["src/components/ui/*.astro"],
-      rules: {
-        "perfectionist/sort-objects": "off",
-      },
     },
   ],
+  rules: {
+    "perfectionist/sort-objects": "off",
+  },
 };
