@@ -25,7 +25,7 @@ const { title } = Astro.props;
     class="antialiased"
     x-bind:class="{'dark':theme==='dark'}"
     x-cloak
-    x-data="{theme:$persist('dark')}"
+    x-data="{theme:$persist(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')}"
   >
     <div id="app">
       <Navbar transition:name="navbar" />
