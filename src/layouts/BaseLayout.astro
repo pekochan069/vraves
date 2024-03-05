@@ -29,11 +29,4 @@ const { title } = Astro.props;
     </div>
   </body>
 </html>
-<script>
-  import Alpine from "alpinejs";
-  import persist from "@alpinejs/persist";
-
-  window.Alpine = Alpine;
-  Alpine.plugin(persist);
-  Alpine.start();
-</script>
+<script src="~/scripts/alpine.ts"></script>
