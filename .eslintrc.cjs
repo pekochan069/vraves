@@ -27,9 +27,6 @@ module.exports = {
         // "astro/no-set-html-directive": "error"
       },
     },
-    {
-      files: ["src/components/ui/*.astro"],
-    },
   ],
   rules: {
     "perfectionist/sort-objects": "off",
