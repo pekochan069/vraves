@@ -80,8 +80,43 @@
   .dropdown > ul > .label {
     @apply px-2 py-1.5 text-sm font-semibold;
   }
+
+  ::-webkit-scrollbar {
+    @apply absolute w-1 md:w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-primary/50 transition duration-100;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/80;
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    @apply bg-primary;
+  }
+
+  ::-webkit-scrollbar-button {
+    @apply hidden;
+  }
 }
 
 [x-cloak] {
   display: none !important;
+}
+
+.os-scrollbar {
+  --os-size: 8px !important;
+  --os-handle-bg: hsl(var(--primary) / 0.5) !important;
+  --os-handle-bg-hover: hsl(var(--primary) / 0.8) !important;
+  --os-handle-bg-active: hsl(var(--primary)) !important;
+
+  @media screen and (min-width: 768px) {
+    --os-size: 10px !important;
+  }
 }

@@ -1,6 +1,9 @@
 ---
+import ViewTransitions from "astro/components/ViewTransitions.astro";
+
 import Navbar from "~/components/navbar/Navbar.astro";
 import "~/styles/root.css";
+import "overlayscrollbars/overlayscrollbars.css";
 
 type Props = {
   title: string;
@@ -15,6 +18,7 @@ const { title } = Astro.props;
     <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
     <meta content="width=device-width" name="viewport" />
     <meta content={Astro.generator} name="generator" />
+    <ViewTransitions />
     <title>{title}</title>
   </head>
   <body
@@ -24,9 +28,10 @@ const { title } = Astro.props;
     x-data="{theme:$persist('dark')}"
   >
     <div id="app">
-      <Navbar />
+      <Navbar transition:name="navbar" />
       <slot />
     </div>
+    <script src="~/scripts/alpine.ts"></script>
+    <script src="~/scripts/scrollbar.ts"></script>
   </body>
 </html>
-<script src="~/scripts/alpine.ts"></script>
