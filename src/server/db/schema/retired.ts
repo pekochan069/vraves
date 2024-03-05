@@ -10,4 +10,6 @@ export const retired = sqliteTable("retired", {
 	retireDate: integer("retire_date", { mode: "timestamp" }).notNull(),
 	retireReason: text("retire_reason").notNull(),
 	reborn: integer("reborn", { mode: "boolean" }),
+	rebornName: text("reborn_name"),
+	rebornUrl: text("reborn_url"),
 });
